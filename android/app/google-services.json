@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "101873650411",
+    "project_id": "encryptionchat-f6a78",
+    "storage_bucket": "encryptionchat-f6a78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101873650411:android:1725f9aac9a10b16914cae",
+        "android_client_info": {
+          "package_name": "com.example.flutterencryption"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101873650411-06llu6ec04rdvbqi6h8mje5vtmeu5e2v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvSl4tm5XxzDdn3Y8UvqiiN1i1TYxHPco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101873650411-06llu6ec04rdvbqi6h8mje5vtmeu5e2v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "101873650411-3hqmogrhk4tnmihbms68thsmvrhgu2jh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterencryption.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
