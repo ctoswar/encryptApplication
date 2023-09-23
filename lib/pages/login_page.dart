@@ -20,10 +20,17 @@ class _LoginPageState extends State<LoginPage> {
   //signIN button
   void signIn() async {
     final authService = Provider.of<AuthService>(context, listen: false);
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
 
     try {
       await authService.signInWithEmailandPassword(
           emailController.text, passwordController.text);
+      if (context.mounted) Navigator.pop(context);
     } catch (ex) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -32,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       );
+      Navigator.pop(context);
     }
   }
 

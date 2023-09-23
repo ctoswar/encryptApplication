@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterencryption/components/drawer.dart';
 import 'package:flutterencryption/services/auth/auth_service.dart';
 import 'package:provider/provider.dart';
 
 import 'chat_page.dart';
+import 'profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +23,19 @@ class _HomePageState extends State<HomePage> {
     authService.signOut();
   }
 
+  void goToProfilePage() {
+    //pop menu drawer
+    Navigator.pop(context);
+
+    // go to profile page
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ProfilePage(),
+      ),
+    );
+  }
+
 //APPBAR
   @override
   Widget build(BuildContext context) {
@@ -31,15 +46,10 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: const Color(0xFFE2EBF0),
-        actions: [
-          IconButton(
-            onPressed: signOut,
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.black,
-            ),
-          ),
-        ],
+      ),
+      drawer: MyDrawer(
+        onProfileTap: goToProfilePage,
+        onSignOut: signOut,
       ),
       body: _buildUserList(),
     );

@@ -20,7 +20,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
 //signUp button
   void signUp() async {
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
     if (passwordController.text != repassController.text) {
+      Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Password Don't match!"),
@@ -37,6 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
         passwordController.text,
       );
     } catch (ex) {
+      Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(ex.toString()),
