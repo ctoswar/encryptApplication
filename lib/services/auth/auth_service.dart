@@ -21,6 +21,8 @@ class AuthService extends ChangeNotifier {
       _firestore.collection('users').doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         'email': email,
+        'username': email.split("@")[0],
+        'bio': 'empty bio'
       }, SetOptions(merge: true));
       return userCredential;
     } on FirebaseAuthException catch (ex) {
@@ -41,6 +43,8 @@ class AuthService extends ChangeNotifier {
       _firestore.collection('users').doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         'email': email,
+        'username': email.split("@")[0],
+        'bio': 'empty bio'
       });
       return userCredential;
     } on FirebaseAuthException catch (ex) {
