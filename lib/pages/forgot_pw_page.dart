@@ -51,30 +51,41 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         backgroundColor: Colors.grey[900],
         elevation: 0,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0),
-            child: Text(
-              'enter an email',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Text(
+                      'Enter your email to send a link reset password',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                  SizedBox(height: 50),
+                  MyTextField(
+                    // Use MyTextField widget here
+                    controller: emailController,
+                    hint: 'Email',
+                    obscureText: false,
+                    background: const Color(0xFFE2EBF0),
+                  ),
+                  const SizedBox(height: 25),
+                  MyButton(
+                    // Use MyButton widget here
+                    onTap: passwordReset,
+                    text: 'Reset Button',
+                  ),
+                ],
+              ),
             ),
           ),
-          SizedBox(height: 50),
-          MyTextField(
-            controller: emailController,
-            hint: 'Email',
-            obscureText: false,
-            background: const Color(0xFFE2EBF0),
-          ),
-          const SizedBox(height: 25),
-          MyButton(
-            onTap: passwordReset,
-            text: 'Reset Button',
-          ),
-        ],
+        ),
       ),
     );
   }
