@@ -107,8 +107,6 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  // Rest of your code (including _buildMessageList, _buildMessageItem, and _buildMessageInput) remains unchanged.
-
   // ...
 
   //build message list
