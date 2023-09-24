@@ -4,6 +4,7 @@ import 'package:flutterencryption/components/my_text_field.dart';
 //import 'package:flutterencryption/services/auth/auth_service.dart';
 import 'package:provider/provider.dart';
 import '../services/auth/auth_service.dart';
+import 'forgot_pw_page.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -87,6 +88,35 @@ class _LoginPageState extends State<LoginPage> {
                   hint: 'Password',
                   obscureText: true,
                   background: const Color(0xFFE2EBF0),
+                ),
+
+                //FORGOT PASSWORD
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPasswordPage();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'forgot password?',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
 
                 const SizedBox(height: 25),
