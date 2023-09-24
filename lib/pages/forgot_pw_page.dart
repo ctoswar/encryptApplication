@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterencryption/components/my_button.dart';
 
 import '../components/my_text_field.dart';
 
@@ -69,10 +70,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             background: const Color(0xFFE2EBF0),
           ),
           const SizedBox(height: 25),
-          MaterialButton(
-            onPressed: passwordReset,
-            child: Text('Reset Button'),
-            color: Colors.grey[300],
+          MyButton(
+            onTap: passwordReset,
+            text: 'Reset Button',
           ),
         ],
       ),
