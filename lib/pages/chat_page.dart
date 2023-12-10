@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterencryption/components/chat_bubble.dart';
-import 'package:flutterencryption/components/my_text_field.dart';
+import 'package:flutterencryption/components/my_text_field_chat.dart';
 import 'package:flutterencryption/services/chat/chat_service.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -26,7 +26,7 @@ class _ChatPageState extends State<ChatPage> {
   final ChatService _chatService = ChatService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final String serverURL =
-      'http://127.0.0.1:50100'; // Replace with your Flask server address
+      'http://192.168.1.7:5000'; // Replace with your Flask server address
 
   Future<void> sendMessage() async {
     if (_messageController.text.isNotEmpty) {
@@ -86,13 +86,12 @@ class _ChatPageState extends State<ChatPage> {
         title: Text(
           widget.receiverUserEmail,
           style: const TextStyle(
-            color: Colors.black, // Set text color to black
+            color: Colors.white, // Set text color to black
           ),
         ),
-        backgroundColor:
-            const Color(0xFFE2EBF0), // Set app bar background color
+        backgroundColor: Colors.black, // Set app bar background color
         iconTheme: const IconThemeData(
-          color: Colors.black, // Set back button color to black
+          color: Colors.white, // Set back button color to black
         ),
       ),
       body: Column(
@@ -116,7 +115,7 @@ class _ChatPageState extends State<ChatPage> {
           widget.receiverUserID, _firebaseAuth.currentUser!.uid),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Error${snapshot.error}');
+          return Text('Error Server is down at the moment');
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -191,10 +190,11 @@ class _ChatPageState extends State<ChatPage> {
           Row(
             children: [
               Expanded(
-                child: MyTextField(
+                child: MyTextField_chat(
                   controller: _messageController,
                   hint: 'Enter message',
                   obscureText: false,
+                  backgroundColor: Colors.grey,
                   background: Colors.grey,
                 ),
               ),
@@ -207,7 +207,7 @@ class _ChatPageState extends State<ChatPage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(9.0),
                     ),
                   ),
                   child: const Padding(

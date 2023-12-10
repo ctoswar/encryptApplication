@@ -43,9 +43,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text(
           "Chats",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: const Color(0xFFE2EBF0),
+        backgroundColor: Colors.black,
       ),
       drawer: MyDrawer(
         onProfileTap: goToProfilePage,

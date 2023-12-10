@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-class MyTextField extends StatelessWidget {
+class MyTextField_chat extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
   final bool obscureText;
-  const MyTextField(
+  const MyTextField_chat(
       {super.key,
       required this.controller,
       required this.hint,
       required this.obscureText,
       required Color background,
-      required MaterialColor backgroundColor,
-      required BorderRadius borderRadius});
+      required MaterialColor backgroundColor});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class MyTextField extends StatelessWidget {
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black),
         ),
-        fillColor: const Color(0xFFE2EBF0),
+        fillColor: Colors.grey[250],
         filled: true,
         hintText: hint,
         hintStyle: const TextStyle(color: Colors.black),

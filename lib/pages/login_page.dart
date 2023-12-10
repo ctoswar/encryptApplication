@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 25),
                   //Welcome back
                   const Text(
-                    "Welcome to EncrypText!",
+                    "Welcome!",
                     style: TextStyle(
                       fontSize: 16,
                     ),
@@ -80,6 +80,8 @@ class _LoginPageState extends State<LoginPage> {
                     hint: 'Email',
                     obscureText: false,
                     background: const Color(0xFFE2EBF0),
+                    backgroundColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(9.0),
                   ),
 
                   const SizedBox(height: 10),
@@ -89,6 +91,8 @@ class _LoginPageState extends State<LoginPage> {
                     hint: 'Password',
                     obscureText: true,
                     background: const Color(0xFFE2EBF0),
+                    backgroundColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(9.0),
                   ),
 
                   //FORGOT PASSWORD
@@ -122,7 +126,11 @@ class _LoginPageState extends State<LoginPage> {
 
                   const SizedBox(height: 25),
                   //signin
-                  MyButton(onTap: signIn, text: "Sign In"),
+                  MyButton(
+                    onTap: signIn,
+                    text: "Sign In",
+                    backgroundColor: Color(0xFFEB455F),
+                  ),
 
                   const SizedBox(height: 50),
                   //register

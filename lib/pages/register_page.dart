@@ -69,9 +69,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   //logo
                   //logo
-                  const Icon(
-                    Icons.message,
-                    size: 80,
+                  Container(
+                    height: 80,
+                    child: Image.asset('assets/logo.png'),
                   ),
                   //logo
 
@@ -94,6 +94,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     hint: 'Email',
                     obscureText: false,
                     background: const Color(0xFFE2EBF0),
+                    backgroundColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(9.0),
                   ),
 
                   const SizedBox(height: 10),
@@ -103,6 +105,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     hint: 'Password',
                     obscureText: true,
                     background: const Color(0xFFE2EBF0),
+                    backgroundColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(9.0),
                   ),
 
                   const SizedBox(height: 10),
@@ -112,12 +116,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     hint: 'Confirm Password',
                     obscureText: true,
                     background: const Color(0xFFE2EBF0),
+                    backgroundColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(9.0),
                   ),
                   //input
 
                   const SizedBox(height: 25),
                   //signun
-                  MyButton(onTap: signUp, text: "Sign Up"),
+                  MyButton(
+                    onTap: signUp,
+                    text: "Sign Up",
+                    backgroundColor: const Color(0xFFEB455F),
+                  ),
 
                   const SizedBox(height: 50),
                   //register

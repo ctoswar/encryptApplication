@@ -47,8 +47,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFE2EBF0),
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.black,
         elevation: 0,
       ),
       body: SafeArea(
@@ -62,7 +63,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Text(
-                      'Enter your email to send a link reset password',
+                      'Enter your email to reset password',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20),
                     ),
@@ -74,12 +75,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     hint: 'Email',
                     obscureText: false,
                     background: const Color(0xFFE2EBF0),
+                    backgroundColor: Colors.grey,
+                    borderRadius: BorderRadius.circular(9.0),
                   ),
                   const SizedBox(height: 25),
                   MyButton(
                     // Use MyButton widget here
+                    backgroundColor: const Color(0xFFEB455F),
                     onTap: passwordReset,
-                    text: 'Reset Button',
+                    text: 'Reset Password',
                   ),
                 ],
               ),
