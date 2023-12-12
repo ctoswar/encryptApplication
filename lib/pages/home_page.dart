@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterencryption/components/drawer.dart';
 import 'package:flutterencryption/services/auth/auth_service.dart';
 import 'package:provider/provider.dart';
-
+import 'package:intl/intl.dart';
 import 'chat_page.dart';
 import 'profile_page.dart';
 
@@ -82,6 +82,9 @@ class _HomePageState extends State<HomePage> {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     if (_auth.currentUser!.email != data['email']) {
+      Timestamp? lastMessageTimestamp = data['timestamp'] as Timestamp?;
+      print("lastMessageTimestamp: $lastMessageTimestamp");
+
       return ListTile(
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         onTap: () {
@@ -91,6 +94,7 @@ class _HomePageState extends State<HomePage> {
               builder: (context) => ChatPage(
                 receiverUserEmail: data['email'],
                 receiverUserID: data['uid'],
+                receiverusername: data['username'],
               ),
             ),
           );
@@ -102,7 +106,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Color(0xFFE2EBF0),
         ),
         title: Text(
-          data['email'],
+          data['username'],
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -114,17 +118,19 @@ class _HomePageState extends State<HomePage> {
             color: Colors.grey,
           ),
         ),
-        trailing: const Column(
+        trailing: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
-              '12:34 PM', // Replace with actual time
-              style: TextStyle(
-                color: Colors.grey,
+            // ignore: unnecessary_null_comparison
+            if (lastMessageTimestamp != null)
+              Text(
+                DateFormat.jm().format(lastMessageTimestamp.toDate()),
+                style: const TextStyle(
+                  color: Colors.grey,
+                ),
               ),
-            ),
-            SizedBox(height: 4),
-            CircleAvatar(
+            const SizedBox(height: 4),
+            const CircleAvatar(
               backgroundColor: Colors.black,
               radius: 6,
             ),

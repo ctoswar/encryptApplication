@@ -27,10 +27,10 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         content: TextField(
           autofocus: true,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             hintText: "Enter a new $field",
-            hintStyle: TextStyle(color: Colors.grey),
+            hintStyle: const TextStyle(color: Colors.grey),
           ),
           onChanged: (value) {
             newValue = value;
@@ -39,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: [
           //cancel button
           TextButton(
-            child: Text(
+            child: const Text(
               'Cancel',
               style: TextStyle(color: Colors.white),
             ),
@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
           //save button
           TextButton(
-            child: Text(
+            child: const Text(
               'Save',
               style: TextStyle(color: Colors.white),
             ),

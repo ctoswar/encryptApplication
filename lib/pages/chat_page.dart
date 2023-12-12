@@ -10,11 +10,13 @@ import 'dart:convert';
 class ChatPage extends StatefulWidget {
   final String receiverUserEmail;
   final String receiverUserID;
+  final String receiverusername;
 
   const ChatPage({
     super.key,
     required this.receiverUserEmail,
     required this.receiverUserID,
+    required this.receiverusername,
   });
 
   @override
@@ -26,7 +28,7 @@ class _ChatPageState extends State<ChatPage> {
   final ChatService _chatService = ChatService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final String serverURL =
-      'http://192.168.1.7:5000'; // Replace with your Flask server address
+      'http://13.55.148.138'; // Replace with your Flask server address
 
   Future<void> sendMessage() async {
     if (_messageController.text.isNotEmpty) {
@@ -84,7 +86,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.receiverUserEmail,
+          widget.receiverusername,
           style: const TextStyle(
             color: Colors.white, // Set text color to black
           ),
@@ -115,7 +117,7 @@ class _ChatPageState extends State<ChatPage> {
           widget.receiverUserID, _firebaseAuth.currentUser!.uid),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Error Server is down at the moment');
+          return const Text('Error Server is down at the moment');
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -157,7 +159,9 @@ class _ChatPageState extends State<ChatPage> {
                   ? MainAxisAlignment.end
                   : MainAxisAlignment.start,
           children: [
-            Text(data['senderEmail']),
+            Text(
+              data['username'],
+            ),
             const SizedBox(
               height: 5,
             ),
@@ -165,10 +169,11 @@ class _ChatPageState extends State<ChatPage> {
               future: decryptedMessageFuture,
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text(
+                  return const Text(
                       'Decrypting...'); // Display a loading message while decrypting.
                 } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
+                  return const Text(
+                      'Error: Error Server is down at the moment');
                 } else {
                   return ChatBubble(
                       message: snapshot.data ?? 'Failed to decrypt');
