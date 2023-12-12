@@ -82,8 +82,10 @@ class _HomePageState extends State<HomePage> {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     if (_auth.currentUser!.email != data['email']) {
-      Timestamp? lastMessageTimestamp = data['timestamp'] as Timestamp?;
-      print("lastMessageTimestamp: $lastMessageTimestamp");
+      Timestamp lastMessageTimestamp =
+          data['lastMessageTimestamp'] ?? Timestamp.now();
+      DateTime dateTime = lastMessageTimestamp.toDate();
+      String formattedTime = DateFormat.jm().format(dateTime);
 
       return ListTile(
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -122,13 +124,12 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             // ignore: unnecessary_null_comparison
-            if (lastMessageTimestamp != null)
-              Text(
-                DateFormat.jm().format(lastMessageTimestamp.toDate()),
-                style: const TextStyle(
-                  color: Colors.grey,
-                ),
+            Text(
+              formattedTime,
+              style: const TextStyle(
+                color: Colors.grey,
               ),
+            ),
             const SizedBox(height: 4),
             const CircleAvatar(
               backgroundColor: Colors.black,
