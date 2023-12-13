@@ -27,8 +27,8 @@ class _ChatPageState extends State<ChatPage> {
   final TextEditingController _messageController = TextEditingController();
   final ChatService _chatService = ChatService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final String serverURL =
-      'http://13.55.148.138'; // Replace with your Flask server address
+  final String serverURL = 'http://13.55.148.138';
+  // Replace with your Flask server address
 
   Future<void> sendMessage() async {
     if (_messageController.text.isNotEmpty) {
