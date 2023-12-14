@@ -27,7 +27,7 @@ class _ChatPageState extends State<ChatPage> {
   final TextEditingController _messageController = TextEditingController();
   final ChatService _chatService = ChatService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final String serverURL = 'http://13.55.148.138';
+  final String serverURL = 'https://encryptedchat.cloud';
   // Replace with your Flask server address
 
   Future<void> sendMessage() async {
@@ -71,9 +71,9 @@ class _ChatPageState extends State<ChatPage> {
       final paddingBytes = decryptedData['padding_bytes']; // If applicable
 
       // Print debug information
-      print('Encrypted Message: $encryptedMessage');
-      print('Original Text: $originalText');
-      print('Padding Bytes: $paddingBytes');
+      // print('Encrypted Message: $encryptedMessage');
+      // print('Original Text: $originalText');
+      // print('Padding Bytes: $paddingBytes');
 
       return originalText;
     } else {
